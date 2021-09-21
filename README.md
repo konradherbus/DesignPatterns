@@ -43,3 +43,54 @@ public class ProductFactory extends AbstractFactory {
       return null;
    }
 }
+
+
+
+public class Price extends AbstractFactory {
+   @Override
+   public Shape getProduct(String ProductType){    
+      if(shapeType.equalsIgnoreCase("product1")){
+         return new Price();         
+      }else if(shapeType.equalsIgnoreCase("product2")){
+         return new Pricee();
+      }	 
+      return null;
+   }
+}
+
+
+
+public class FactoryProducer {
+   public static AbstractFactory getFactory(boolean price){   
+      if(price){
+         return new Price();         
+      }else{
+         return new Product();
+      }
+   }
+}
+
+
+
+public class AbstractFactoryPattern {
+   public static void main(String[] args) {
+      //get product
+      AbstractFactory Product = ProductProducer.getFactory(false);
+      //get product1
+      Product product1 = Product1Factory.getProduct("product1");
+      //call inventory method of product1
+      product1.inventory();
+      //get product2 
+      Product Product2 = ProductFactory.getProduct("product2");
+      //call draw method product2
+      Product2.draw();
+     
+      
+      
+
+      
+      
+      /
+      
+   }
+}
